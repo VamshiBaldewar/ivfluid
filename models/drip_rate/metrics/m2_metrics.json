@@ -1,0 +1,13 @@
+{
+  "trained_at": "2026-10-11 00:28:30",
+  "model": "yolov8n",
+  "dataset": "data\\processed\\drip_yolo\\data.yaml",
+  "data_source": "synthetic drip chamber (tools.gen_drip_dataset)",
+  "imgsz": 416,
+  "epochs_completed": 40,
+  "map50": 0.9928,
+  "map50_95": 0.9241,
+  "precision": 0.9794,
+  "recall": 0.971,
+  "weights": "models\\drip_rate\\weights\\drip_yolo.pt"
+}
