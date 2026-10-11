@@ -1,0 +1,28 @@
+{
+  "clips": [
+    {
+      "video": "data\\raw\\drip_rate\\demo_videos\\10dpm.mp4",
+      "target_dpm": 10.0,
+      "estimated_dpm": 9.9,
+      "abs_error": 0.1,
+      "n_ready": 38
+    },
+    {
+      "video": "data\\raw\\drip_rate\\demo_videos\\20dpm.mp4",
+      "target_dpm": 20.0,
+      "estimated_dpm": 19.7,
+      "abs_error": 0.3,
+      "n_ready": 150
+    },
+    {
+      "video": "data\\raw\\drip_rate\\demo_videos\\30dpm.mp4",
+      "target_dpm": 30.0,
+      "estimated_dpm": 28.8,
+      "abs_error": 1.2,
+      "n_ready": 88
+    }
+  ],
+  "mae_dpm": 0.533,
+  "n_clips": 3,
+  "note": "synthetic falling-drop clips; tracker validated on frame-timestamped replay"
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IV Vision Monitor</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="kicker">GNITS CSE · Batch D3 · Phase I</p>
+      <h1>IV Vision Monitor</h1>
+    </div>
+    <div class="top-actions">
+      <label class="src">
+        Source
+        <input id="source" value="0" title="Webcam index or video path" />
+      </label>
+      <button id="btn-start" type="button">Start pipeline</button>
+      <button id="btn-stop" type="button" class="ghost">Stop</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <article class="live">
+        <div class="live-head">
+          <span>Camera</span>
+          <span id="cam-status" class="pill idle">idle</span>
+        </div>
+        <div class="frame-wrap">
+          <img id="frame" alt="Live camera frame" />
+          <p id="no-frame" class="placeholder">Start the pipeline to show the laptop camera.</p>
+        </div>
+        <p class="meta"><span id="fps">0</span> fps · fusion updates every cycle</p>
+      </article>
+
+      <article id="risk-card" class="risk unknown">
+        <p class="kicker">Fused risk (M4)</p>
+        <h2 id="risk-tier">UNKNOWN</h2>
+        <p id="risk-score">score —</p>
+        <ul id="risk-reasons"></ul>
+      </article>
+    </section>
+
+    <section class="metrics">
+      <article>
+        <p class="kicker">M1 Fluid level</p>
+        <p id="m1-value" class="big">—</p>
+        <p id="m1-detail" class="detail"></p>
+      </article>
+      <article>
+        <p class="kicker">M2 Drip rate</p>
+        <p id="m2-value" class="big">—</p>
+        <p id="m2-detail" class="detail"></p>
+      </article>
+      <article>
+        <p class="kicker">M3 Distress</p>
+        <p id="m3-value" class="big">—</p>
+        <p id="m3-detail" class="detail"></p>
+      </article>
+      <article>
+        <p class="kicker">M5 Time to empty</p>
+        <p id="m5-value" class="big">—</p>
+        <p id="m5-detail" class="detail"></p>
+      </article>
+    </section>
+
+    <section class="lower">
+      <article>
+        <h3>Dataset recorder</h3>
+        <p class="hint">Saves into <code>data/raw/&lt;module&gt;/&lt;label&gt;/</code>. Use drip_rate video at 3–4 known rates; fluid_level stills at known fill %.</p>
+        <div class="form">
+          <label>Module
+            <select id="rec-module">
+              <option value="fluid_level">fluid_level (M1)</option>
+              <option value="drip_rate" selected>drip_rate (M2)</option>
+              <option value="patient">patient (optional check shots)</option>
+            </select>
+          </label>
+          <label>Label
+            <input id="rec-label" placeholder="20dpm or 50" />
+          </label>
+          <label>Kind
+            <select id="rec-kind">
+              <option value="video">video clip</option>
+              <option value="frames">still frames</option>
+            </select>
+          </label>
+          <label>Frame interval (s)
+            <input id="rec-interval" type="number" min="0.2" step="0.2" value="1" />
+          </label>
+        </div>
+        <div class="row">
+          <button id="btn-rec-start" type="button">Start recording</button>
+          <button id="btn-rec-stop" type="button" class="ghost">Stop recording</button>
+          <span id="rec-status" class="detail"></span>
+        </div>
+      </article>
+
+      <article>
+        <h3>Alert log</h3>
+        <p class="hint">One fused stream — not separate bag / drip / patient alarms.</p>
+        <ol id="alerts" class="alerts"></ol>
+      </article>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+{
+  "trained_at": "2026-10-11 13:33:47",
+  "classes": [
+    "0",
+    "50",
+    "80",
+    "100"
+  ],
+  "n_classes": 4,
+  "n_train": 1984,
+  "n_val": 495,
+  "val_accuracy": 1.0,
+  "per_class_accuracy": {
+    "0": 1.0,
+    "50": 1.0,
+    "80": 1.0,
+    "100": 1.0
+  },
+  "confusion_matrix": [
+    [
+      193,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      126,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      75,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      101
+    ]
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2956,
+      "val_acc": 0.8384
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0326,
+      "val_acc": 0.9677
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0352,
+      "val_acc": 0.9899
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0263,
+      "val_acc": 0.9899
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0072,
+      "val_acc": 0.998
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.0096,
+      "val_acc": 1.0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.0074,
+      "val_acc": 1.0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.0021,
+      "val_acc": 1.0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.0028,
+      "val_acc": 1.0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.0015,
+      "val_acc": 1.0
+    }
+  ],
+  "best_saved_val_acc": 1.0,
+  "history_best": 1.0,
+  "seconds": 739.3,
+  "weights": "models\\fluid_level\\weights\\fluid_level.pt"
+}

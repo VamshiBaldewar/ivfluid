@@ -1,0 +1,330 @@
+{
+  "trained_at": "2026-10-11 12:58:42",
+  "model": "EmotionCNN (FER2013, hflip TTA)",
+  "classes": [
+    "angry",
+    "disgust",
+    "fear",
+    "happy",
+    "neutral",
+    "sad",
+    "surprise"
+  ],
+  "distress_classes": [
+    "angry",
+    "disgust",
+    "fear",
+    "sad"
+  ],
+  "n_train": 25839,
+  "n_val": 2870,
+  "n_test": 7178,
+  "val_accuracy": 0.6749,
+  "test_accuracy_7class": 0.6675,
+  "test_per_class_accuracy": {
+    "angry": 0.6075,
+    "disgust": 0.7117,
+    "fear": 0.3936,
+    "happy": 0.8501,
+    "neutral": 0.6918,
+    "sad": 0.5261,
+    "surprise": 0.8544
+  },
+  "confusion_matrix": [
+    [
+      582,
+      39,
+      79,
+      28,
+      104,
+      98,
+      28
+    ],
+    [
+      19,
+      79,
+      5,
+      2,
+      2,
+      2,
+      2
+    ],
+    [
+      124,
+      20,
+      403,
+      20,
+      115,
+      213,
+      129
+    ],
+    [
+      30,
+      4,
+      21,
+      1508,
+      112,
+      46,
+      53
+    ],
+    [
+      75,
+      6,
+      59,
+      63,
+      853,
+      151,
+      26
+    ],
+    [
+      144,
+      8,
+      135,
+      40,
+      241,
+      656,
+      23
+    ],
+    [
+      20,
+      4,
+      50,
+      26,
+      12,
+      9,
+      710
+    ]
+  ],
+  "distress_accuracy": 0.8342,
+  "distress_auroc": 0.9193,
+  "positive_rate": 0.4653,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.8708,
+      "val_acc": 0.3443
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.6336,
+      "val_acc": 0.4056
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.4876,
+      "val_acc": 0.4498
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.3987,
+      "val_acc": 0.4753
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.343,
+      "val_acc": 0.5251
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.2984,
+      "val_acc": 0.5324
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.2539,
+      "val_acc": 0.4801
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.2429,
+      "val_acc": 0.4679
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.2128,
+      "val_acc": 0.5686
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.179,
+      "val_acc": 0.5732
+    },
+    {
+      "epoch": 11,
+      "train_loss": 1.1423,
+      "val_acc": 0.5195
+    },
+    {
+      "epoch": 12,
+      "train_loss": 1.1417,
+      "val_acc": 0.5983
+    },
+    {
+      "epoch": 13,
+      "train_loss": 1.1227,
+      "val_acc": 0.5857
+    },
+    {
+      "epoch": 14,
+      "train_loss": 1.1052,
+      "val_acc": 0.6031
+    },
+    {
+      "epoch": 15,
+      "train_loss": 1.0871,
+      "val_acc": 0.5909
+    },
+    {
+      "epoch": 16,
+      "train_loss": 1.0578,
+      "val_acc": 0.5927
+    },
+    {
+      "epoch": 17,
+      "train_loss": 1.0389,
+      "val_acc": 0.607
+    },
+    {
+      "epoch": 18,
+      "train_loss": 1.0318,
+      "val_acc": 0.6167
+    },
+    {
+      "epoch": 19,
+      "train_loss": 1.021,
+      "val_acc": 0.5927
+    },
+    {
+      "epoch": 20,
+      "train_loss": 1.0173,
+      "val_acc": 0.6188
+    },
+    {
+      "epoch": 21,
+      "train_loss": 0.9758,
+      "val_acc": 0.6132
+    },
+    {
+      "epoch": 22,
+      "train_loss": 0.9735,
+      "val_acc": 0.6411
+    },
+    {
+      "epoch": 23,
+      "train_loss": 0.9577,
+      "val_acc": 0.6439
+    },
+    {
+      "epoch": 24,
+      "train_loss": 0.9403,
+      "val_acc": 0.6484
+    },
+    {
+      "epoch": 25,
+      "train_loss": 0.9362,
+      "val_acc": 0.6505
+    },
+    {
+      "epoch": 26,
+      "train_loss": 0.9116,
+      "val_acc": 0.6537
+    },
+    {
+      "epoch": 27,
+      "train_loss": 0.9184,
+      "val_acc": 0.6376
+    },
+    {
+      "epoch": 28,
+      "train_loss": 0.8946,
+      "val_acc": 0.6474
+    },
+    {
+      "epoch": 29,
+      "train_loss": 0.8792,
+      "val_acc": 0.6592
+    },
+    {
+      "epoch": 30,
+      "train_loss": 0.8638,
+      "val_acc": 0.6571
+    },
+    {
+      "epoch": 31,
+      "train_loss": 0.8635,
+      "val_acc": 0.6596
+    },
+    {
+      "epoch": 32,
+      "train_loss": 0.8455,
+      "val_acc": 0.6659
+    },
+    {
+      "epoch": 33,
+      "train_loss": 0.843,
+      "val_acc": 0.6659
+    },
+    {
+      "epoch": 34,
+      "train_loss": 0.8282,
+      "val_acc": 0.669
+    },
+    {
+      "epoch": 35,
+      "train_loss": 0.8232,
+      "val_acc": 0.6735
+    },
+    {
+      "epoch": 36,
+      "train_loss": 0.8068,
+      "val_acc": 0.6711
+    },
+    {
+      "epoch": 37,
+      "train_loss": 0.8069,
+      "val_acc": 0.6648
+    },
+    {
+      "epoch": 38,
+      "train_loss": 0.7987,
+      "val_acc": 0.6672
+    },
+    {
+      "epoch": 39,
+      "train_loss": 0.801,
+      "val_acc": 0.6704
+    },
+    {
+      "epoch": 40,
+      "train_loss": 0.7927,
+      "val_acc": 0.6742
+    },
+    {
+      "epoch": 41,
+      "train_loss": 0.7894,
+      "val_acc": 0.669
+    },
+    {
+      "epoch": 42,
+      "train_loss": 0.7871,
+      "val_acc": 0.6749
+    },
+    {
+      "epoch": 43,
+      "train_loss": 0.7773,
+      "val_acc": 0.6742
+    },
+    {
+      "epoch": 44,
+      "train_loss": 0.7851,
+      "val_acc": 0.6732
+    },
+    {
+      "epoch": 45,
+      "train_loss": 0.7733,
+      "val_acc": 0.6746
+    }
+  ],
+  "seconds": 17622.7,
+  "weights": "models\\patient\\weights\\emotion_fer.pt"
+}
