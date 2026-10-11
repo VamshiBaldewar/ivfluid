@@ -40,12 +40,21 @@ class Pipeline:
     def running(self) -> bool:
         return self._thread is not None and self._thread.is_alive()
 
-    def start(self) -> None:
+    def start(self) -> bool:
+        """Open the configured source, then start the processing loop.
+
+        Opening the source here rather than only inside the worker makes the
+        result of the dashboard start/record actions deterministic: a caller
+        can begin recording as soon as ``start`` reports success.
+        """
         if self.running:
-            return
+            return True
+        if not self.camera.ok and not self.camera.open():
+            return False
         self._stop.clear()
         self._thread = threading.Thread(target=self._loop, name="iv-pipeline", daemon=True)
         self._thread.start()
+        return True
 
     def stop(self) -> None:
         self._stop.set()
@@ -55,6 +64,8 @@ class Pipeline:
         self.camera.close()
 
     def start_dataset_video(self, module: str, label: str) -> str:
+        if not self.running or not self.camera.ok:
+            raise RuntimeError("Camera/source is not ready; start the pipeline first")
         module = _safe_token(module)
         label = _safe_token(label)
         dest_dir = DATA_RAW / module / label
@@ -74,6 +85,8 @@ class Pipeline:
         return str(path)
 
     def start_dataset_frames(self, module: str, label: str, interval_s: float = 1.0) -> str:
+        if not self.running or not self.camera.ok:
+            raise RuntimeError("Camera/source is not ready; start the pipeline first")
         module = _safe_token(module)
         label = _safe_token(label)
         dest_dir = DATA_RAW / module / label
@@ -105,7 +118,7 @@ class Pipeline:
         return meta
 
     def _loop(self) -> None:
-        opened = self.camera.open()
+        opened = self.camera.ok
         last = time.perf_counter()
         fps = 0.0
         while not self._stop.is_set():
@@ -124,7 +137,7 @@ class Pipeline:
                 jpeg = None
             else:
                 fluid = infer_fluid_level(frame)
-                drip = infer_drip_rate(frame)
+                drip = infer_drip_rate(frame, ts=self.camera.frame_timestamp)
                 patient = infer_patient(frame)
                 jpeg = encode_jpeg(frame)
                 self._maybe_save_frame(frame, now)

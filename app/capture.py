@@ -16,6 +16,7 @@ class FrameSource:
         self._cap: cv2.VideoCapture | None = None
         self._writer: cv2.VideoWriter | None = None
         self.record_path: Path | None = None
+        self._frame_timestamp: float | None = None
 
     def open(self) -> bool:
         self.close()
@@ -33,12 +34,27 @@ class FrameSource:
     def ok(self) -> bool:
         return self._cap is not None and self._cap.isOpened()
 
+    @property
+    def frame_timestamp(self) -> float | None:
+        """Timestamp in a video file's timeline for the most recent frame.
+
+        Live camera captures deliberately return ``None`` so their consumers
+        continue to use wall-clock time. File timestamps make replayed videos
+        independent of the machine's inference speed.
+        """
+        return self._frame_timestamp
+
     def read(self) -> np.ndarray | None:
         if self._cap is None:
             return None
         ok, frame = self._cap.read()
         if not ok or frame is None:
             return None
+        self._frame_timestamp = None
+        if isinstance(self.source, str):
+            position_ms = self._cap.get(cv2.CAP_PROP_POS_MSEC)
+            if position_ms >= 0:
+                self._frame_timestamp = position_ms / 1000.0
         if self._writer is not None:
             self._writer.write(frame)
         return frame
@@ -68,6 +84,7 @@ class FrameSource:
 
     def close(self) -> None:
         self.stop_recording()
+        self._frame_timestamp = None
         if self._cap is not None:
             self._cap.release()
             self._cap = None

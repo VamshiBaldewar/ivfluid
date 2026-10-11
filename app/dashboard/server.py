@@ -21,7 +21,7 @@ class RecordRequest(BaseModel):
 
 
 class SourceRequest(BaseModel):
-    source: str = Field(description="Webcam index like 0 or a video file path")
+    source: str = Field(default="0", description="Webcam index like 0 or a video file path")
 
 
 @app.get("/")
@@ -50,7 +50,8 @@ def api_start(body: SourceRequest | None = None) -> dict:
             PIPELINE.stop()
         PIPELINE.source = src
         PIPELINE.camera.source = src
-    PIPELINE.start()
+    if not PIPELINE.start():
+        raise HTTPException(status_code=409, detail=f"Could not open source: {PIPELINE.source}")
     return {"ok": True, "running": True, "source": str(PIPELINE.source)}
 
 
@@ -62,8 +63,8 @@ def api_stop() -> dict:
 
 @app.post("/api/record/start")
 def api_record_start(body: RecordRequest) -> dict:
-    if not PIPELINE.running:
-        PIPELINE.start()
+    if not PIPELINE.running and not PIPELINE.start():
+        raise HTTPException(status_code=409, detail=f"Could not open source: {PIPELINE.source}")
     try:
         if body.kind == "video":
             path = PIPELINE.start_dataset_video(body.module, body.label)

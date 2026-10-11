@@ -9,14 +9,24 @@ __pycache__/
 *.pth
 *.onnx
 *.weights
+# Runtime checkpoints intentionally bundled with the prototype. Other training
+# outputs remain ignored so local retraining does not bloat the repository.
+!models/fluid_level/weights/fluid_level.pt
+!models/drip_rate/weights/drip_yolo.pt
+!models/patient/weights/emotion_fer.pt
 data/raw/**
 data/processed/**
 data/timeseries/*.csv
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/timeseries/.gitkeep
+!data/raw/fluid_level/
 !data/raw/fluid_level/.gitkeep
+!data/raw/drip_rate/
 !data/raw/drip_rate/.gitkeep
+!data/raw/patient/
 !data/raw/patient/.gitkeep
+# Ultralytics validation and training visualizations are reproducible outputs.
+runs/
 .DS_Store
 Thumbs.db

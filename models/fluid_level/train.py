@@ -148,6 +148,7 @@ def train(args) -> dict:
     torch.manual_seed(seed)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    M1_WEIGHTS.parent.mkdir(parents=True, exist_ok=True)
     class_dirs = discover_class_dirs(Path(args.root))
     classes = sorted(class_dirs)
     if len(classes) < 2:
